@@ -78,9 +78,9 @@ def delete_post(id: int, db:Session = Depends(get_db), current_user: int = Depen
                             detail=f"post with id:{id} does not exist")
     
     # to delete only the logged in user's post
-    # if post.owner_id != current_user.id:
-    #     raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
-    #                         detail="Not authorized to pertform request action")
+    if post.owner_id != current_user.id:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
+                            detail="Not authorized to pertform request action")
     
     post_query.delete(synchronize_session=False)
     db.commit()
