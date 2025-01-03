@@ -1,12 +1,6 @@
-name: Build and Deploy Code
+name: Buildand Deploy Code
 
-on:
-  push:
-    branches:
-      - main  
-  pull_request:
-    branches:
-      - main  
+on: [push, pull-request]
 
 jobs:
   job1:
@@ -14,5 +8,5 @@ jobs:
     steps:
       - name: pulling git repo
         uses: actions/checkout@v2
-      - name: say hi to dinno
+      - name: say hi dinno
         run: echo "hello dinno"
